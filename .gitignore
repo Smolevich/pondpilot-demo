@@ -1,0 +1,6 @@
+node_modules
+my-app/node_modules
+my-app/dist
+.DS_Store
+.vscode
+my-app/.gitignore
