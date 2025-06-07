@@ -2,6 +2,8 @@
 
 This demo showcases using [pondpilot-widget](https://github.com/pondpilot/pondpilot-widget) inside a Vue 3 application. It allows you to upload large CSV or Excel files and query them locally in your browser via DuckDB WASM.
 
+On the page, upload a file and a SQL editor will appear. The data is loaded into a table named `data`. Edit the query and run it to explore your file directly in the browser.
+
 ## Setup
 
 ```bash
