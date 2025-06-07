@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:5173` to try it.
+Open `http://localhost:5173/pondpilot-demo/` to try it.
 
 An identicon favicon is embedded via a data URI in `index.html`. Replace it with your own if desired.
 
