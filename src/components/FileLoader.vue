@@ -38,6 +38,7 @@ async function handleFile(event) {
   }
 
   widget.editor.querySelector('pre').textContent = 'SELECT * FROM data LIMIT 20;'
+  await widget.run()
 }
 </script>
 
