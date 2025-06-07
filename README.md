@@ -17,3 +17,5 @@ An identicon favicon is embedded via a data URI in `index.html`. Replace it with
 
 The project is deployed using GitHub Actions to the `gh-pages` branch. Any push to `master` builds the Vue app and publishes the `dist` folder.
 
+Vite's `base` option is configured to `/pondpilot-demo/` in `vite.config.js` so that asset paths resolve correctly when the site is hosted at `https://smolevich.github.io/pondpilot-demo/`.
+
