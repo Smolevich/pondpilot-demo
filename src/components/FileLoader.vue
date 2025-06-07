@@ -44,7 +44,9 @@ async function handleFile(event) {
 <template>
   <div>
     <input type="file" @change="handleFile" />
-    <div ref="widgetContainer" class="pondpilot-snippet"></div>
+    <div ref="widgetContainer" class="pondpilot-snippet">
+      <pre>SELECT 1;</pre>
+    </div>
   </div>
 </template>
 
