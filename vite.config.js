@@ -5,4 +5,11 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   base: '/pondpilot-demo/',
   plugins: [vue()],
+  server: {
+    hmr: true,
+    watch: {
+      usePolling: true,
+      interval: 100
+    }
+  }
 })
