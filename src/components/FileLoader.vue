@@ -49,11 +49,18 @@ async function showTableInfo(tableName) {
   try {
     await ensureWidget()
     if (widget && widget.editor) {
+      const query = `DESCRIBE ${tableName};`
+      if (widget.setQuery) widget.setQuery(query)
+      if (widget.editor.setValue) widget.editor.setValue(query)
       const preElement = widget.editor.querySelector('pre')
       if (preElement) {
-        preElement.textContent = `DESCRIBE ${tableName};`
-        await widget.run()
+        preElement.textContent = query
+        try {
+          const event = new Event('input', { bubbles: true })
+          preElement.dispatchEvent(event)
+        } catch (e) {}
       }
+      await widget.run()
     }
   } catch (err) {
     alert('Something went wrong')
@@ -98,6 +105,7 @@ async function restoreSavedTables() {
       loadedTables.value.push({
         id: file.id,
         name: file.name,
+        tableName: file.tableName,
         type: file.type,
         size: file.size,
         timestamp: file.timestamp
@@ -177,16 +185,18 @@ async function handleFile(event) {
     showNotification(`File ${fileName} loaded and saved successfully`, 'success')
     // Показываем пример запроса
     if (widget && widget.editor) {
+      const query = `SELECT * FROM ${tableName} LIMIT 20;`
+      if (widget.setQuery) widget.setQuery(query)
+      if (widget.editor.setValue) widget.editor.setValue(query)
       const preElement = widget.editor.querySelector('pre')
       if (preElement) {
-        const query = `SELECT * FROM ${tableName} LIMIT 20;`
         preElement.textContent = query
-        if (widget.setQuery) widget.setQuery(query)
-        if (widget.editor.setValue) widget.editor.setValue(query)
-        const event = new Event('input', { bubbles: true })
-        preElement.dispatchEvent(event)
-        await widget.run()
+        try {
+          const event = new Event('input', { bubbles: true })
+          preElement.dispatchEvent(event)
+        } catch (e) {}
       }
+      await widget.run()
     }
   } catch (err) {
     showNotification('Something went wrong while processing the file', 'error')
@@ -199,27 +209,18 @@ async function showTableData(tableName) {
   try {
     await ensureWidget()
     if (widget && widget.editor) {
+      const query = `SELECT * FROM ${tableName} LIMIT 20;`
+      if (widget.setQuery) widget.setQuery(query)
+      if (widget.editor.setValue) widget.editor.setValue(query)
       const preElement = widget.editor.querySelector('pre')
       if (preElement) {
-        const query = `SELECT * FROM ${tableName} LIMIT 20;`
         preElement.textContent = query
-        
-        // Принудительно обновляем содержимое редактора разными способами
-        if (widget.setQuery) {
-          widget.setQuery(query)
-        }
-        
-        // Попробуем другие способы обновления
-        if (widget.editor.setValue) {
-          widget.editor.setValue(query)
-        }
-        
-        // Триггерим событие изменения
-        const event = new Event('input', { bubbles: true })
-        preElement.dispatchEvent(event)
-        
-        await widget.run()
+        try {
+          const event = new Event('input', { bubbles: true })
+          preElement.dispatchEvent(event)
+        } catch (e) {}
       }
+      await widget.run()
     }
   } catch (err) {
     showNotification('Something went wrong', 'error')
