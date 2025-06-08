@@ -1,0 +1,44 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Project Rules
+
+## 1. Code Cleanliness
+- Code must be clean, readable, and self-explanatory.
+- Avoid unnecessary complexity and overengineering.
+- Remove dead code and unused variables.
+
+## 2. SOLID Principles
+- Follow SOLID principles where possible, especially for business logic and data handling.
+- Prefer composition over inheritance.
+
+## 3. Comments
+- All comments in the codebase must be in English.
+- Comments should explain "why", not "what" (the code should be self-explanatory).
+
+## 4. JavaScript Style
+- Avoid using classes in JavaScript (unless using TypeScript).
+- Prefer functional and modular code (functions, hooks, composables).
+- Use ES6+ features (const/let, arrow functions, destructuring, etc).
+
+## 5. Component Structure
+- Keep components small and focused (Single Responsibility Principle).
+- Extract reusable logic into composables or utility functions.
+
+## 6. Error Handling
+- Handle errors gracefully and provide user-friendly feedback.
+- Avoid exposing raw errors to the user.
+
+## 7. Naming
+- Use clear, descriptive names for variables, functions, and components.
+- Use camelCase for variables and functions, PascalCase for components.
+
+## 8. Formatting
+- Use consistent code formatting (Prettier or ESLint recommended).
+- Indentation: 2 spaces.
+
+## 9. Dependencies
+- Avoid unnecessary dependencies.
+- Use only well-maintained and widely adopted libraries.
